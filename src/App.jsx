@@ -84,7 +84,7 @@ function App() {
     setCopied(false);
     
     try {
-      const response = await fetch("https://ai-powered-story-generator.onrender.com/generate-story", {
+      const response = await fetch("https://story-genertor.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
