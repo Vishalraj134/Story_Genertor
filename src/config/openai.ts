@@ -1,6 +1,6 @@
 export const generateStory = async (prompt: string, style: string, length: 'short' | 'medium' | 'long') => {
   try {
-    const response = await fetch('http://localhost:3001/generate-story', {
+    const response = await fetch('https://story-genertor.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
