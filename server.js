@@ -13,7 +13,18 @@ import process from "process";
 const apiKey = process.env.GEMINI_API_KEY || "AIzaSyBoNi4cnjN6Gf8JhOmPpegd2a_25xQckiE";
 const genAI = new GoogleGenerativeAI(apiKey);
 
-app.use(cors({origin:["https://localhost:3000","https://story-genertor.onrender.com"]}));
+const corsOptions = {
+  origin: [
+    "https://story-genertor.vercel.app", //Vercel frontend
+    "http://localhost:3000", // Local development
+    "https://story-genertor.onrender.com" // Render backend
+  ],
+  methods: ["GET", "POST", "OPTIONS"], // Add OPTIONS for preflight
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post("/generate-story", async (req, res) => {
